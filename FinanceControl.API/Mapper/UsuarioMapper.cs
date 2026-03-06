@@ -5,36 +5,28 @@ namespace FinanceControl.API.Mapper
 {
     public class UsuarioMapper
     {
-        public static Usuario ConvertToEntity(UsuarioRequest usuarioDTO)
+        public static Usuario ToEntity(UsuarioRequest usuarioDTO)
         {
             return new Usuario
             {
-                id = usuarioDTO.id,
                 nome = usuarioDTO.nome,
                 email = usuarioDTO.email,
-                senha = usuarioDTO.senha
+                senha = usuarioDTO.senha,
+                criadoEm = DateTime.UtcNow,
+                editadoEm = DateTime.UtcNow,
             };
         }
-        public static UsuarioResponse ConvertToResponse(Usuario usuario)
+        public static UsuarioResponse ToResponse(Usuario usuario)
         {
             return new UsuarioResponse
             {
                 id = usuario.id,
                 nome = usuario.nome,
-                email = usuario.email
+                email = usuario.email,
+                criadoEm = usuario.criadoEm,
+                editadoEm = usuario.editadoEm
             };
         }
-
-        public static UsuarioListResponse ConvertToListResponse(Usuario usuario)
-        {
-            return new UsuarioListResponse
-            {
-                id = usuario.id,
-                nome = usuario.nome,
-                email = usuario.email
-            };
-        }
-
 
     }
 }
